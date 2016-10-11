@@ -1,0 +1,71 @@
+---
+
+- hosts: all
+  remote_user: root
+  become: True
+  pre_tasks:
+
+    - name: Install Ubuntu Cloud archive keyring (Debian)
+      when: ansible_os_family == 'Debian'
+      apt:
+        name: ubuntu-cloud-keyring
+        state: present
+
+    - name: Enable OpenStack (Debian)
+      when: ansible_os_family == 'Debian'
+      apt_repository:
+        repo: 'deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/mitaka main'
+        state: present
+        update_cache: yes
+
+    - name: Enable OpenStack (RedHat)
+      when: ansible_os_family == 'RedHat'
+      yum:
+        name: '{{ item }}'
+        state: present
+        update_cache: yes
+      with_items:
+        - centos-release-openstack-mitaka
+        - policycoreutils-python
+
+  roles:
+    - role: mysql
+      mysql_daemon: 'mysql'
+      mysql_log_error: '/var/log/mysql/error.log'
+      mysql_pid_file: '/var/run/mysqld/mysqld.pid'
+      mysql_packages:
+        - mariadb-client
+        - mariadb-server
+        - python-mysqldb
+      when: ansible_os_family == 'Debian'
+    - role: mysql
+      mysql_daemon: 'mariadb'
+      mysql_socket: '/var/lib/mysql/mysql.sock'
+      mysql_log_error: '/var/log/mariadb/mariadb.log'
+      mysql_syslog_tag: 'mariadb'
+      mysql_pid_file: '/var/run/mariadb/mariadb.pid'
+      when: ansible_os_family == 'RedHat'
+
+    - role: java
+      when: ansible_os_family == 'Debian'
+      java_packages:
+        - openjdk-8-jdk
+
+    - rabbitmq
+    - role: midonet-repos
+      openstack_version: 'mitaka'
+    - role: zookeeper
+      zookeeper_hosts: '{{ groups["zookeeper"] }}'
+    - role: cassandra
+      cassandra_hosts: '{{ groups["cassandra"] }}'
+    - openstack-keystone
+    - openstack-glance
+    - openstack-nova-compute
+    - openstack-nova-controller
+    - openstack-neutron-controller
+    - openstack-horizon
+    - role: midonet-cluster
+      zookeeper_hosts: '{{ groups["zookeeper"] }}'
+      cassandra_hosts: '{{ groups["cassandra"] }}'
+    - role: midonet-agent
+      zookeeper_hosts: '{{ groups["zookeeper"] }}'

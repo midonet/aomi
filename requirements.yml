@@ -1,0 +1,48 @@
+- name: rabbitmq
+  src: https://github.com/openstack-ansible-galaxy/rabbitmq/
+  version: master
+
+- name: midonet-repos
+  src: midonet.midonet-repos
+
+- name: zookeeper
+  src: midonet.zookeeper
+
+- name: cassandra
+  src: midonet.cassandra
+
+- name: mysql
+  src: geerlingguy.mysql
+
+- name: java
+  src: geerlingguy.java
+
+- name: openstack-keystone
+  src: https://github.com/openstack-ansible-galaxy/openstack-keystone
+  version: master
+
+- name: openstack-glance
+  src: https://github.com/openstack-ansible-galaxy/openstack-glance
+  version: master
+
+- name: openstack-nova-compute
+  src: https://github.com/openstack-ansible-galaxy/openstack-nova-compute
+  version: master
+
+- name: openstack-nova-controller
+  src: https://github.com/openstack-ansible-galaxy/openstack-nova-controller
+  version: master
+
+- name: openstack-neutron-controller
+  src: https://github.com/openstack-ansible-galaxy/openstack-neutron-controller
+  version: master
+
+- name: openstack-horizon
+  src: https://github.com/openstack-ansible-galaxy/openstack-horizon
+  version: master
+
+- name: midonet-cluster
+  src: midonet.midonet-cluster
+
+- name: midonet-agent
+  src: midonet.midonet-agent
