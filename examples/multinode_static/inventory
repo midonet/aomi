@@ -1,0 +1,11 @@
+[controller]
+10.0.0.1
+[compute]
+10.0.0.2
+[zookeeper]
+10.0.0.10
+[cassandra]
+10.0.0.10
+[gateway]
+10.0.0.10
+
