@@ -42,7 +42,7 @@
   version: master
 
 - name: midonet-cluster
-  src: midonet.midonet-cluster
+  src: https://github.com/midonet/ansible-midonet-cluster
 
 - name: midonet-agent
-  src: midonet.midonet-agent
+  src: https://github.com/midonet/ansible-midonet-agent
