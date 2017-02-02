@@ -3,10 +3,10 @@
   version: master
 
 - name: midonet-repos
-  src: midonet.midonet-repos
+  src: https://github.com/midonet/ansible-midonet-repo
 
 - name: zookeeper
-  src: midonet.zookeeper
+  src: https://github.com/midonet/ansible-zookeeper
 
 - name: cassandra
   src: midonet.cassandra
