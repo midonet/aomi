@@ -1,4 +1,3 @@
-
 # Install ansible
 APT=`command -v apt-get` || true
 YUM=`command -v yum` || true
@@ -15,6 +14,4 @@ else
   echo "Distro unsupported."
   exit 1
 fi
-pushd tests
 ansible-galaxy install -r requirements.yml
-popd
