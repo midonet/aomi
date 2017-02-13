@@ -46,3 +46,6 @@
 
 - name: midonet-agent
   src: https://github.com/midonet/ansible-midonet-agent
+
+- name: midonet-gateway
+  src: https://github.com/midonet/ansible-midonet-gateway
