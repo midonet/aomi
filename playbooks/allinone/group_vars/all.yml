@@ -1,0 +1,190 @@
+# Public IP default
+public_ip: '{{  hostvars[groups.controller[0]].ansible_default_ipv4.address  }}'
+
+
+# RabbitMQ
+rabbitmq_tcp_address: '0.0.0.0'
+rabbitmq_vhosts:
+  - name: '/'
+rabbitmq_users:
+  - vhost: '/'
+    user: 'openstack'
+    password: 'jaeVoH5Y'
+
+
+# MariaDB
+mysql_root_password: 'iepae3hip3Fain4e'
+mysql_bind_address: 0.0.0.0
+#mysql_character_set_server: 'utf8'
+#mysql_collation_server: 'utf8_general_ci'
+mysql_innodb_file_per_table: 'innodb_file_per_table'
+mysql_databases:
+  - name: 'keystone'
+    collation: 'utf8_general_ci'
+    encoding: 'utf8'
+  - name: 'glance'
+    collation: 'utf8_general_ci'
+    encoding: 'utf8'
+  - name: 'neutron'
+    collation: 'utf8_general_ci'
+    encoding: 'utf8'
+  - name: 'nova'
+    collation: 'utf8_general_ci'
+    encoding: 'utf8'
+  - name: 'nova_api'
+    collation: 'utf8_general_ci'
+    encoding: 'utf8'
+mysql_users:
+  - name: 'keystone'
+    password: 'Umoh4AhquooNgaic'
+    priv: 'keystone.*:ALL'
+    host: '%'
+  - name: 'glance'
+    password: 'ieroo7uuge1Xeele'
+    priv: 'glance.*:ALL'
+    host: '%'
+  - name: 'neutron'
+    password: 'ipeengon6phaJohw'
+    priv: 'neutron.*:ALL'
+    host: '%'
+  - name: 'nova'
+    password: 'aePhie8Aesh5web5'
+    priv: 'nova.*:ALL/nova_api.*:ALL'
+    host: '%'
+
+# Keystone
+openstack_keystone_admin_bind_host: '{{ public_ip }}'
+openstack_keystone_bind_host: '{{ public_ip }}'
+openstack_keystone_hostname: '{{ public_ip }}'
+openstack_keystone_database_url: 'mysql+pymysql://keystone:Umoh4AhquooNgaic@{{ public_ip }}/keystone'
+openstack_keystone_tenants:
+  - { name: admin, description: 'Admin tenant' }
+  - { name: service, description: 'Service tenant' }
+  - { name: demo, description: 'Demo tenant'  }
+openstack_keystone_users:
+  - { name: admin, password: 'Heir9hacuphiete7', tenant: admin }
+  - { name: demo, password: 'demopassword', tenant: demo }
+  - { name: glance, password: 'ieroo7uuge1Xeele', tenant: service }
+  - { name: neutron, password: 'ipeengon6phaJohw', tenant: service }
+  - { name: nova, password: 'aePhie8Aesh5web5', tenant: service }
+  - { name: midonet, password: 'AhhoPeel9eid4Ain', tenant: service }
+openstack_keystone_roles:
+  - { name: admin, user: admin, tenant: admin }
+  - { name: _member_, user: demo, tenant: demo  }
+  - { name: admin, user: glance, tenant: service  }
+  - { name: admin, user: neutron, tenant: service  }
+  - { name: admin, user: nova, tenant: service  }
+  - { name: admin, user: midonet, tenant: service  }
+openstack_keystone_services:
+  - { name: keystone, service_type: identity }
+  - { name: glance, service_type: image }
+  - { name: neutron, service_type: network }
+  - { name: midonet, service_type: midonet}
+  - { name: nova, service_type: compute }
+openstack_keystone_endpoints:
+  - service_name: keystone
+    public_url: 'http://{{ public_ip }}:5000/v3'
+    internal_url: 'http://{{ public_ip }}:5000/v3'
+    admin_url: 'http://{{ public_ip }}:35357/v3'
+  - service_name: glance
+    public_url: 'http://{{ public_ip }}:9292/'
+    internal_url: 'http://{{ public_ip }}:9292/'
+    admin_url: 'http://{{ public_ip }}:9292/'
+  - service_name: nova
+    public_url: 'http://{{ public_ip }}:8774/v2.1/%(tenant_id)s'
+    internal_url: 'http://{{ public_ip }}:8774/v2.1/%(tenant_id)s'
+    admin_url: 'http://{{ public_ip }}:8774/v2.1/%(tenant_id)s'
+  - service_name: 'neutron'
+    public_url: 'http://{{ public_ip }}:9696/'
+    internal_url: 'http://{{ public_ip }}:9696/'
+    admin_url: 'http://{{ public_ip }}:9696/'
+
+# Glance
+openstack_glance_pass: 'ieroo7uuge1Xeele'
+openstack_glance_demo_pass: 'demopassword'
+openstack_glance_keystone_hostname: '{{ public_ip }}'
+openstack_glance_rabbit_hostname: '{{ public_ip }}'
+openstack_glance_rabbit_username: 'openstack'
+openstack_glance_rabbit_password: 'jaeVoH5Y'
+openstack_glance_database_url: 'mysql+pymysql://glance:ieroo7uuge1Xeele@{{ public_ip }}/glance'
+
+# Nova controller
+openstack_nova_controller_nova_my_ip: '{{ ansible_default_ipv4.address }}'
+openstack_nova_controller_nova_database_url: 'mysql+pymysql://nova:aePhie8Aesh5web5@{{ public_ip }}/nova'
+openstack_nova_controller_nova_api_database_url: 'mysql+pymysql://nova:aePhie8Aesh5web5@{{ public_ip }}/nova_api'
+openstack_nova_controller_novncproxy_base_url_ip: '{{ public_ip }}'
+openstack_nova_controller_keystone_hostname: '{{ public_ip }}'
+openstack_nova_controller_keystone_admin_password: 'Heir9hacuphiete7'
+openstack_nova_controller_rabbit_hostname: '{{ public_ip }}'
+openstack_nova_controller_rabbit_username: 'openstack'
+openstack_nova_controller_rabbit_password: 'jaeVoH5Y'
+openstack_nova_controller_glance_hostname: '{{ public_ip }}'
+openstack_nova_controller_glance_protocol: 'http'
+openstack_nova_controller_nova_password: 'aePhie8Aesh5web5'
+openstack_nova_controller_demo_user: 'demo'
+openstack_nova_controller_demo_pass: 'demopassword'
+openstack_nova_controller_demo_project: 'demo'
+openstack_nova_controller_virt_type: 'kvm'
+openstack_nova_controller_neutron_hostname: '{{ public_ip }}'
+openstack_nova_controller_neutron_metadata_secret: 'somefnordity'
+openstack_nova_controller_neutron_password: 'ipeengon6phaJohw'
+
+# Nova compute
+openstack_nova_compute_nova_my_ip: '{{ ansible_default_ipv4.address }}'
+openstack_nova_compute_vncserver_proxyclient_address: '{{ ansible_default_ipv4.address }}'
+openstack_nova_compute_novncproxy_base_url_ip: '{{ public_ip }}'
+openstack_nova_compute_rabbit_hostname: '{{ public_ip }}'
+openstack_nova_compute_rabbit_username: 'openstack'
+openstack_nova_compute_rabbit_password: 'jaeVoH5Y'
+openstack_nova_compute_nova_virt_type: 'kvm'
+openstack_nova_compute_keystone_hostname: '{{ public_ip }}'
+openstack_nova_compute_keystone_admin_password: 'Heir9hacuphiete7'
+openstack_nova_compute_glance_hostname: '{{ public_ip  }}'
+openstack_nova_compute_neutron_hostname: '{{ public_ip  }}'
+openstack_nova_compute_neutron_password: 'ipeengon6phaJohw'
+openstack_nova_compute_add_tun_acl: True
+
+# Neutron controller
+openstack_neutron_controller_neutron_database_url: 'mysql+pymysql://neutron:ipeengon6phaJohw@{{ public_ip }}/neutron'
+openstack_neutron_controller_neutron_plugin: 'midonet'
+openstack_neutron_controller_neutron_password: 'ipeengon6phaJohw'
+openstack_neutron_controller_rabbit_hostname: '{{ public_ip }}'
+openstack_neutron_controller_rabbit_username: 'openstack'
+openstack_neutron_controller_rabbit_password: 'jaeVoH5Y'
+openstack_neutron_controller_keystone_hostname: '{{ public_ip }}'
+openstack_neutron_controller_neutron_nova_metadata_ip: '{{ public_ip  }}'
+openstack_neutron_controller_nova_password: 'aePhie8Aesh5web5'
+openstack_neutron_controller_demo_user: 'demo'
+openstack_neutron_controller_demo_pass: 'demopassword'
+openstack_neutron_controller_demo_project: 'demo'
+openstack_neutron_controller_midonet_api_password: 'AhhoPeel9eid4Ain'
+openstack_neutron_controller_midonet_api_hostname: '{{ public_ip }}'
+
+# Horizon
+openstack_horizon_keystone_hostname: '{{ public_ip }}'
+
+# Midonet cluster
+midonet_cluster_enable_metadata: True
+midonet_cluster_metadata_host: '{{ ansible_default_ipv4.address }}'
+midonet_cluster_metadata_secret: 'somefnordity'
+midonet_cluster_keystone_host: '{{ public_ip }}'
+midonet_cluster_keystone_password: 'AhhoPeel9eid4Ain'
+midonet_cluster_keystone_username: 'midonet'
+midonet_cluster_keystone_project: 'service'
+midonet_cluster_max_heap_size: '1024M'
+
+
+# Midonet agent
+midonet_agent_tzone_name: 'tzone'
+midonet_agent_max_heap_size: '1024M'
+midonet_agent_cluster_password: 'AhhoPeel9eid4Ain'
+midonet_agent_cluster_username: 'midonet'
+midonet_agent_cluster_project: 'service'
+midonet_agent_cluster_hostname: '{{ public_ip }}'
+
+# Midonet gateway
+midonet_gateway_keystone_username: 'admin'
+midonet_gateway_keystone_project: 'admin'
+midonet_gateway_keystone_password: 'Heir9hacuphiete7'
+midonet_gateway_keystone_hostname: '{{ public_ip }}'
+# midonet_gateway_api_endpoint: 'http://127.0.0.1:8181/midonet-api'
