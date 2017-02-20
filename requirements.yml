@@ -9,7 +9,7 @@
   src: https://github.com/midonet/ansible-zookeeper
 
 - name: cassandra
-  src: midonet.cassandra
+  src: https://github.com/midonet/ansible-cassandra
 
 - name: mysql
   src: geerlingguy.mysql
@@ -42,7 +42,10 @@
   version: master
 
 - name: midonet-cluster
-  src: midonet.midonet-cluster
+  src: https://github.com/midonet/ansible-midonet-cluster
 
 - name: midonet-agent
-  src: midonet.midonet-agent
+  src: https://github.com/midonet/ansible-midonet-agent
+
+- name: midonet-gateway
+  src: https://github.com/midonet/ansible-midonet-gateway

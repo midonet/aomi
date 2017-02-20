@@ -55,9 +55,7 @@
     - role: midonet-repos
       openstack_version: 'mitaka'
     - role: zookeeper
-      zookeeper_hosts: '{{ groups["zookeeper"] }}'
     - role: cassandra
-      cassandra_hosts: '{{ groups["cassandra"] }}'
     - openstack-keystone
     - openstack-glance
     - openstack-nova-compute
@@ -65,7 +63,8 @@
     - openstack-neutron-controller
     - openstack-horizon
     - role: midonet-cluster
-      zookeeper_hosts: '{{ groups["zookeeper"] }}'
-      cassandra_hosts: '{{ groups["cassandra"] }}'
+      zookeeper_hosts: ['localhost']
+      cassandra_hosts: ['localhost']
     - role: midonet-agent
-      zookeeper_hosts: '{{ groups["zookeeper"] }}'
+      zookeeper_hosts: ['localhost']
+    - midonet-gateway

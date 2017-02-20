@@ -9,9 +9,13 @@ Ansible playbooks for OpenStack + MidoNet
 
 ## Environments
 
-### Local all-in-one
+### Quickstart (All-in-one)
 
-* run-allinone.sh
+* Run `scripts/install-ansible.sh` to install Ansible, dependencies and roles.
+
+* Run All-in-one playbook:
+
+    ansible-playbook -i localhost, -c local -e public_ip=`curl -s icanhazip.com` playbooks/allinone/midonet-allinone.yml
 
 ### Openstack multi-node
 
