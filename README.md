@@ -15,7 +15,7 @@ Ansible playbooks for OpenStack + MidoNet
 
 * Run All-in-one playbook:
 
-    ansible-playbook -i localhost, -c local -e public_ip=`curl -s icanhazip.com` playbooks/allinone/midonet-allinone.yml
+    ansible-playbook -i localhost, -c local playbooks/allinone/midonet-allinone.yml
 
 ### Openstack multi-node
 
