@@ -1,9 +1,16 @@
 ---
 
 - hosts: all
-  remote_user: root
   become: True
+
   pre_tasks:
+    - set_fact:
+        midonet_repo_mem_enabled: True
+        midonet_repo_mem_username: '{{ lookup("env", "MEM_USERNAME") }}'
+        midonet_repo_mem_password: '{{ lookup("env", "MEM_PASSWORD") }}'
+        midonet_cluster_mem_enabled: True
+        midonet_agent_mem_enabled: True
+      when: '{{ lookup("env", "MEM_ENABLED")|default(False) }}'
 
     - name: Install Ubuntu Cloud archive keyring (Debian)
       when: ansible_os_family == 'Debian'
@@ -29,6 +36,9 @@
         - policycoreutils-python
 
   roles:
+    - role: midonet-repos
+      openstack_version: 'mitaka'
+
     - role: mysql
       mysql_daemon: 'mysql'
       mysql_log_error: '/var/log/mysql/error.log'
@@ -52,8 +62,6 @@
         - openjdk-8-jdk
 
     - rabbitmq
-    - role: midonet-repos
-      openstack_version: 'mitaka'
     - role: zookeeper
     - role: cassandra
     - openstack-keystone
@@ -68,3 +76,9 @@
     - role: midonet-agent
       zookeeper_hosts: ['localhost']
     - midonet-gateway
+
+    - role: elasticsearch
+    - role: logstash
+
+    - role: midonet-insights-analytics
+      zookeeper_hosts: ['localhost']
