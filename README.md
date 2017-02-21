@@ -5,7 +5,18 @@ Ansible playbooks for OpenStack + MidoNet
 
 ## Requirements
 
-...
+### Supported distributions
+
+* Ubuntu Trusty (14.04)
+* Ubuntu Xenial (16.04)
+* CentOS 7.2
+
+### Hardware
+
+Minimum requirements for the All-in-one:
+
+* 8GB RAM
+* 10GB of disk space
 
 ## Environments
 
@@ -29,8 +40,8 @@ ansible-playbook -i localhost, -c local playbooks/allinone/midonet-allinone.yml
 
 ### Openstack multi-node
 
-* Terraform stuff
+* Terraform stuff (WIP)
 
 ### AWS multi-node
 
-* Terraform stuff
+* Terraform stuff (WIP)

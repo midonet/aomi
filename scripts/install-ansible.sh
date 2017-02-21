@@ -6,10 +6,10 @@ if [[ "$APT" != "" ]]; then
   sudo apt-get install -qqy software-properties-common sshpass
   sudo apt-add-repository -y ppa:ansible/ansible
   sudo apt-get update
-  sudo apt-get install -qqy ansible
+  sudo apt-get install -qqy ansible python-netaddr
 elif [[ "$YUM" != "" ]]; then
   sudo yum -y install epel-release
-  sudo yum -y install git wget sshpass ansible
+  sudo yum -y install wget sshpass ansible python-netaddr
 else
   echo "Distro unsupported."
   exit 1
