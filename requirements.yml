@@ -49,3 +49,12 @@
 
 - name: midonet-gateway
   src: https://github.com/midonet/ansible-midonet-gateway
+
+- name: 'elasticsearch'
+  src: 'https://github.com/midonet/ansible-elasticsearch'
+
+- name: 'logstash'
+  src: 'https://github.com/midonet/ansible-logstash'
+
+- name: 'midonet-insights-analytics'
+  src: 'https://github.com/midonet/ansible-midonet-insights-analytics'
