@@ -77,8 +77,10 @@
       zookeeper_hosts: ['localhost']
     - midonet-gateway
 
-    - role: elasticsearch
-    - role: logstash
+    - midonet-manager
+
+    - elasticsearch
+    - logstash
 
     - role: midonet-insights-analytics
       zookeeper_hosts: ['localhost']

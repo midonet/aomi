@@ -188,3 +188,13 @@ midonet_gateway_keystone_project: 'admin'
 midonet_gateway_keystone_password: 'Heir9hacuphiete7'
 midonet_gateway_keystone_hostname: '{{ public_ip }}'
 # midonet_gateway_api_endpoint: 'http://127.0.0.1:8181/midonet-api'
+
+# MidoNet Manager
+midonet_api_hostname: '{{ public_ip }}'
+login_hostname: '{{ public_ip }}'
+ssl_enabled: False
+web_server_host: 'ws'
+web_protocol: 'http'
+
+# MidoNet Insights Analytics
+midonet_insights_analytics_calliope_auth_ssl_enabled: False
