@@ -37,7 +37,7 @@ export MEM_USERNAME=repo_username MEM_PASSWORD=repo_password
 ansible-playbook -i localhost, -c local playbooks/allinone/mem-allinone.yml
 ````
 
-* * Check http://www.midokura.com/try-mem/ to get a 30-day trial.*
+*&ast; Check http://www.midokura.com/try-mem/ to get a 30-day trial.*
 
 ### Openstack multi-node
 
