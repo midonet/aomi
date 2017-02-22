@@ -4,13 +4,6 @@
   become: True
 
   pre_tasks:
-    - set_fact:
-        midonet_repo_mem_enabled: True
-        midonet_repo_mem_username: '{{ lookup("env", "MEM_USERNAME") }}'
-        midonet_repo_mem_password: '{{ lookup("env", "MEM_PASSWORD") }}'
-        midonet_cluster_mem_enabled: True
-        midonet_agent_mem_enabled: True
-      when: '{{ lookup("env", "MEM_ENABLED")|default(False) }}'
 
     - name: Install Ubuntu Cloud archive keyring (Debian)
       when: ansible_os_family == 'Debian'
@@ -76,11 +69,3 @@
     - role: midonet-agent
       zookeeper_hosts: ['localhost']
     - midonet-gateway
-
-    - midonet-manager
-
-    - elasticsearch
-    - logstash
-
-    - role: midonet-insights-analytics
-      zookeeper_hosts: ['localhost']

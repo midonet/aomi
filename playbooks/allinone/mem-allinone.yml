@@ -1,0 +1,32 @@
+---
+
+- include: midonet-allinone.yml
+
+- hosts: all
+  become: True
+
+  pre_tasks:
+
+    - set_fact:
+        midonet_repo_mem_enabled: True
+        midonet_repo_mem_username: '{{ lookup("env", "MEM_USERNAME") }}'
+        midonet_repo_mem_password: '{{ lookup("env", "MEM_PASSWORD") }}'
+        midonet_cluster_mem_enabled: True
+        midonet_agent_mem_enabled: True
+
+    - fail:
+        msg: "{{ item }} is not defined. See README.md"
+      when:
+        - "{{ item }} == ''"
+      with_items:
+        - midonet_repo_mem_username
+        - midonet_repo_mem_password
+
+  roles:
+    - role: midonet-repos
+      openstack_version: 'mitaka'
+    - midonet-manager
+    - elasticsearch
+    - logstash
+    - role: midonet-insights-analytics
+      zookeeper_hosts: ['localhost']
