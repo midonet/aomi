@@ -50,6 +50,9 @@
 - name: midonet-gateway
   src: https://github.com/midonet/ansible-midonet-gateway
 
+- name: 'midonet-manager'
+  src: 'https://github.com/midonet/ansible-midonet-manager'
+
 - name: 'elasticsearch'
   src: 'https://github.com/midonet/ansible-elasticsearch'
 
