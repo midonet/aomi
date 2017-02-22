@@ -30,13 +30,14 @@ Minimum requirements for the All-in-one:
 ansible-playbook -i localhost, -c local playbooks/allinone/midonet-allinone.yml
 ````
 
-* Run All-in-one playbook (MEM):
+* Run All-in-one playbook (MEM)\*:
 
 ```
-export MEM_ENABLED=True MEM_USERNAME=repo_username MEM_PASSWORD=repo_password
-ansible-playbook -i localhost, -c local playbooks/allinone/midonet-allinone.yml
+export MEM_USERNAME=repo_username MEM_PASSWORD=repo_password
+ansible-playbook -i localhost, -c local playbooks/allinone/mem-allinone.yml
 ````
 
+* * Check http://www.midokura.com/try-mem/ to get a 30-day trial.*
 
 ### Openstack multi-node
 
