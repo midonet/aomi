@@ -6,8 +6,12 @@ Aomi is a project originally created by Midokura Ops team, to provide Ansible pl
 
 It uses Ansible playbooks of the [openstack-ansible-galaxy](https://github.com/openstack-ansible-galaxy) project, which includes roles for each individual OSt component.
 
-This project aims to be a simple, extensible, distribution agnostic installer.
-It is not intended for large production-ready purposes, but as a sandbox or starting point for any custom needs.
+This project aims to be:
+
+* Simple
+* Extensible
+* Distribution agnostic
+* General-purpose
 
 [Aomi](https://en.wikipedia.org/wiki/Aomi,_Tokyo) is also an area around Tokyo Bay.
 
@@ -53,4 +57,4 @@ See example under `playbooks/multinode_static/`
 
 ### AWS multi-node
 
-* Terraform stuff (WIP)
+* Terraform deployment with Ansible inventory support (TBD).
