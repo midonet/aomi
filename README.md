@@ -1,11 +1,25 @@
 ![AOMI](./doc/header.png)
 
-# AOMI
-Ansible playbooks for OpenStack + MidoNet
+# AOMI (Ansible Openstack MIdonet)
+
+Aomi is a project originally created by Midokura Ops team, to provide Ansible playbooks to deploy/install OpenStack environments with the MidoNet networking solution, both OSS and Enterprise.
+
+It uses Ansible playbooks of the [openstack-ansible-galaxy](https://github.com/openstack-ansible-galaxy) project, which includes roles for each individual OSt component.
+
+This project aims to be:
+
+* Simple
+* Extensible
+* Distribution agnostic
+* General-purpose
+
+Openstack Mitaka version is supported at the moment, Newton will be added soon™.
+
+[Aomi](https://en.wikipedia.org/wiki/Aomi,_Tokyo) is also an area around Tokyo Bay.
 
 ## Requirements
 
-### Supported distributions
+### Supported Linux distributions
 
 * Ubuntu Trusty (14.04)
 * Ubuntu Xenial (16.04)
@@ -37,12 +51,12 @@ export MEM_USERNAME=repo_username MEM_PASSWORD=repo_password
 ansible-playbook -i localhost, -c local playbooks/allinone/mem-allinone.yml
 ````
 
-* * Check http://www.midokura.com/try-mem/ to get a 30-day trial.*
+*&ast; Check http://www.midokura.com/try-mem/ to get a 30-day trial.*
 
-### Openstack multi-node
+### Multi-node
 
-* Terraform stuff (WIP)
+See example under `playbooks/multinode_static/`
 
 ### AWS multi-node
 
-* Terraform stuff (WIP)
+* Terraform deployment with Ansible inventory support (TBD).
