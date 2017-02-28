@@ -4,9 +4,10 @@
 
 Aomi is a project originally created by Midokura Ops team, to provide Ansible playbooks to deploy/install OpenStack environments with the MidoNet networking solution, both OSS and Enterprise.
 
-Aomi uses OpenStack playbooks of the openstack-ansible-galaxy project, which includes roles for each individual OSt component.
+It uses Ansible playbooks of the [openstack-ansible-galaxy](https://github.com/openstack-ansible-galaxy) project, which includes roles for each individual OSt component.
 
-This project focus is on simplicity and extensibility. It is not intended for large, production-ready installations, but as a sandbox or starting point for any custom needs.
+This project aims to be a simple, extensible, distribution agnostic installer.
+It is not intended for large production-ready purposes, but as a sandbox or starting point for any custom needs.
 
 [Aomi](https://en.wikipedia.org/wiki/Aomi,_Tokyo) is also an area around Tokyo Bay.
 
