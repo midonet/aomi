@@ -13,11 +13,13 @@ This project aims to be:
 * Distribution agnostic
 * General-purpose
 
+Openstack Mitaka version is supported at the moment, Newton will be added soon™.
+
 [Aomi](https://en.wikipedia.org/wiki/Aomi,_Tokyo) is also an area around Tokyo Bay.
 
 ## Requirements
 
-### Supported distributions
+### Supported Linux distributions
 
 * Ubuntu Trusty (14.04)
 * Ubuntu Xenial (16.04)
