@@ -32,7 +32,7 @@ Minimum requirements for the All-in-one:
 * 8GB RAM
 * 10GB of disk space
 
-For multi-node deployments, it depends on your needs, but as a reference you can check [this link](https://docs.openstack.org/developer/openstack-ansible/mitaka/install-guide/overview-requirements.html) .
+For multi-node deployments, it depends on your needs, but as a reference you can check [this link](https://docs.openstack.org/developer/openstack-ansible/mitaka/install-guide/overview-requirements.html) from OSA project.
 
 ## Software requirements
 
@@ -74,11 +74,12 @@ See example under `playbooks/multinode_static/`
 ## Bugs and issues
 
 Please try to identify the component and report it as an issue on the appropiate github project. See `requirements.yml` file.
+
 If it's a bug in Aomi itself or you can't identify the component involved, please report it [here](https://github.com/midonet/aomi/issues/new)
 
 ## TBD
 
-* Terraform deployment with Ansible inventory supported.
+* Terraform deployment with Ansible inventory integration.
 * Basic example deployment.
 * Random password generation.
 * Add heat service.
