@@ -32,11 +32,11 @@ Minimum requirements for the All-in-one:
 * 8GB RAM
 * 10GB of disk space
 
+For multi-node deployments, it depends on your needs, but as a reference you can check [this link](https://docs.openstack.org/developer/openstack-ansible/mitaka/install-guide/overview-requirements.html) .
+
 ## Software requirements
 
 * Python 2.7
-
-For multi-node deployments, it depends on your needs, but as a reference you can check [this link](https://docs.openstack.org/developer/openstack-ansible/mitaka/install-guide/overview-requirements.html) .
 
 ## Environments
 
@@ -52,16 +52,20 @@ For multi-node deployments, it depends on your needs, but as a reference you can
 ansible-playbook -i localhost, -c local playbooks/allinone/midonet-allinone.yml
 ```
 
-* Run All-in-one playbook (MEM)\*:
+* Or run All-in-one playbook for Midokura Enterprise MidoNet (MEM)\*:
 
 ```
 export MEM_USERNAME=repo_username MEM_PASSWORD=repo_password
 ansible-playbook -i localhost, -c local playbooks/allinone/mem-allinone.yml
 ````
 
-*&ast; Check http://www.midokura.com/try-mem/ to get a 30-day trial.*
+* :coffee: Let Ansible do the work (20min approximately.)
 
-keystonerc credentials can be found at `/root` path.
+* `keystonerc` credentials can be found at `/root` path.
+
+
+*&ast; Check http://www.midokura.com/try-mem/ to get a 30-day trial for MEM.*
+
 
 ### Multi-node
 
