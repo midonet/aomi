@@ -25,6 +25,7 @@
   roles:
     - role: midonet-repos
       openstack_version: 'mitaka'
+      midonet_repo_midonet_version: '5.4'
     - midonet-manager
     - elasticsearch
     - logstash
