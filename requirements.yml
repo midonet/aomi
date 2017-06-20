@@ -19,7 +19,7 @@
 
 - name: openstack-keystone
   src: https://github.com/openstack-ansible-galaxy/openstack-keystone
-  version: master
+  version: features/newton
 
 - name: openstack-glance
   src: https://github.com/openstack-ansible-galaxy/openstack-glance
@@ -35,7 +35,7 @@
 
 - name: openstack-neutron-controller
   src: https://github.com/openstack-ansible-galaxy/openstack-neutron-controller
-  version: master
+  version: features/newton
 
 - name: openstack-horizon
   src: https://github.com/openstack-ansible-galaxy/openstack-horizon

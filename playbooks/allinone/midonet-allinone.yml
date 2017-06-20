@@ -14,7 +14,7 @@
     - name: Enable OpenStack (Debian)
       when: ansible_os_family == 'Debian'
       apt_repository:
-        repo: 'deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/mitaka main'
+        repo: 'deb http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/newton main'
         state: present
         update_cache: yes
 
@@ -25,12 +25,13 @@
         state: present
         update_cache: yes
       with_items:
-        - centos-release-openstack-mitaka
+        - centos-release-openstack-newton
         - policycoreutils-python
 
   roles:
     - role: midonet-repos
-      openstack_version: 'mitaka'
+      openstack_version: 'newton'
+      midonet_repo_openstack_plugin_version: 'newton'
       midonet_repo_midonet_version: '5.4'
 
     - role: mysql
